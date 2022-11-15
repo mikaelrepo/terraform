@@ -103,13 +103,16 @@ variable "domain_admin_username" {
 }
 
 variable "domain_admin_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "vm_admin_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "vsphere_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
