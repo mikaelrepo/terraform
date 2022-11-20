@@ -4,4 +4,5 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
-azure/.terraform.lock.hcl
+*/*.tfplan
+*/.terraform.lock.hcl
