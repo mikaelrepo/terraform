@@ -58,6 +58,10 @@ variable "vm_memory" {
   type = number
 }
 
+variable "vm_size" {
+  type = string
+}
+
 variable "vm_firmware" {
   type = string
 }
