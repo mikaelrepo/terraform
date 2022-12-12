@@ -50,6 +50,10 @@ variable "vm_name" {
   type = string
 }
 
+variable "vm_count" {
+  type = number
+}
+
 variable "vm_cpus" {
   type = number
 }
@@ -70,9 +74,9 @@ variable "vm_efi_secure_boot_enabled" {
   type = bool
 }
 
-variable "vm_ipv4_address" {
-  type = string
-}
+# variable "vm_ipv4_address" {
+#   type = string
+# }
 
 variable "vm_ipv4_netmask" {
   type = string

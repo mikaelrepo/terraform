@@ -35,7 +35,8 @@ data "vsphere_virtual_machine" "template" {
 }
 
 resource "vsphere_virtual_machine" "vm" {
-  name                    = var.vm_name
+  name                    = "${var.vm_name}${count.index + 1}"
+  count                   = var.vm_count
   folder                  = var.vsphere_folder
   num_cpus                = var.vm_cpus
   memory                  = var.vm_memory
@@ -48,7 +49,7 @@ resource "vsphere_virtual_machine" "vm" {
     network_id = data.vsphere_network.network.id
   }
   disk {
-    label            = "disk0"
+    label = "disk0"
     # size             = data.vsphere_virtual_machine.template.disks[0].size
     size             = var.vm_size
     eagerly_scrub    = data.vsphere_virtual_machine.template.disks[0].eagerly_scrub
@@ -58,14 +59,13 @@ resource "vsphere_virtual_machine" "vm" {
     template_uuid = data.vsphere_virtual_machine.template.id
     customize {
       windows_options {
-        computer_name         = var.vm_name
+        computer_name         = "${var.vm_name}${count.index + 1}"
         join_domain           = var.domain
         domain_admin_user     = var.domain_admin_username
         domain_admin_password = var.domain_admin_password
         admin_password        = var.vm_admin_password
       }
       network_interface {
-        ipv4_address = var.vm_ipv4_address
         ipv4_netmask = var.vm_ipv4_netmask
       }
 
